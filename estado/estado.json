@@ -1,0 +1,22 @@
+{
+  "hosts": {
+    "api.lanzappia.com": {
+      "fallos": 1,
+      "alertado": false
+    },
+    "api.lyflof.com": {
+      "fallos": 1,
+      "alertado": false
+    },
+    "api.diginomadas.com": {
+      "fallos": 1,
+      "alertado": false
+    },
+    "api.expertosnegociosonline.com": {
+      "fallos": 1,
+      "alertado": false
+    }
+  },
+  "latido_alertado": false,
+  "tocado": "2026-11-17"
+}
