@@ -21,7 +21,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Comprobar
         env:
-          HOSTS: ${{ vars.HOSTS_VIGILADOS || 'api.lanzappia.com api.lyflof.com api.diginomadas.com api.expertosnegociosonline.com' }}
+          HOSTS: ${{ vars.HOSTS_VIGILADOS || 'api.lanzappia.com api.lyflof.com api.diginomadas.com api.expertosnegociosonline.com api.coloratrix.com' }}
           RUTA: ${{ inputs.ruta || '/auth/v1/health' }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
