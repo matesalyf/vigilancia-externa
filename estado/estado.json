@@ -1,20 +1,20 @@
 {
   "hosts": {
     "api.lanzappia.com": {
-      "fallos": 1,
-      "alertado": false
+      "fallos": 2,
+      "alertado": true
     },
     "api.lyflof.com": {
-      "fallos": 1,
-      "alertado": false
+      "fallos": 2,
+      "alertado": true
     },
     "api.diginomadas.com": {
-      "fallos": 1,
-      "alertado": false
+      "fallos": 2,
+      "alertado": true
     },
     "api.expertosnegociosonline.com": {
-      "fallos": 1,
-      "alertado": false
+      "fallos": 2,
+      "alertado": true
     }
   },
   "latido_alertado": false,
