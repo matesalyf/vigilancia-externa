@@ -15,6 +15,10 @@
     "api.expertosnegociosonline.com": {
       "fallos": 0,
       "alertado": false
+    },
+    "api.coloratrix.com": {
+      "fallos": 0,
+      "alertado": false
     }
   },
   "latido_alertado": false,
