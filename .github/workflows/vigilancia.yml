@@ -1,0 +1,35 @@
+name: Vigilancia externa del VPS
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+    inputs:
+      ruta:
+        description: 'Ruta a pedir (vacío = /auth/v1/health). Para pruebas: /prueba-fallo'
+        required: false
+        default: ''
+concurrency:
+  group: vigilancia
+  cancel-in-progress: false
+permissions:
+  contents: write
+jobs:
+  vigilar:
+    runs-on: ubuntu-latest   # siempre runner de GitHub, nunca los del VPS
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Comprobar
+        env:
+          HOSTS: ${{ vars.HOSTS_VIGILADOS || 'api.lanzappia.com api.lyflof.com api.diginomadas.com api.expertosnegociosonline.com' }}
+          RUTA: ${{ inputs.ruta || '/auth/v1/health' }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          LATIDO_URL: ${{ vars.LATIDO_URL }}
+        run: bash vigilar.sh
+      - name: Guardar estado si cambió
+        run: |
+          if [ -n "$(git status --porcelain estado)" ]; then
+            git config user.name "vigilancia"; git config user.email "vigilancia@users.noreply.github.com"
+            git add estado; git commit -m "estado: actualizado"; git pull --rebase -q; git push -q
+          fi
